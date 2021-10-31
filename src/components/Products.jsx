@@ -32,24 +32,32 @@ class Products extends React.Component {
 				}
 			)		
 }
-
+	
 result(id,title,price){
+	// this.setState({
+	// 	result: this.state.result + price,
+	// })
+	const total = this.state.products
+			.forEach(product => product.id === id ?  
+				{
+					id:product.id,
+					price: product.price,
+					title: product.title,
+					added: true
+				} : 
+					{...product})
+
+	console.log('total',total)
+
 	this.setState({
-		result: this.state.result + price,
-	})
-	this.setState({
-		totalAdded: [...this.state.products, {
-			id: id,
-			price: price,
-			title: title,
-			// added: true,
-		}]  
-	})
-	this.state.products.map(product => product.id === id ?  {...product, added: true} : {...product})
+		totalAdded: total.id
+	})	
 }
 
     render() {
-			console.log('id', this.state.totalAdded)
+			console.log('totalAdded:', this.state.totalAdded)
+		
+
 			const {error, isLoading, products, added} = this.state;
 				if (error) {
 					return <p>Error {error.message}</p>
