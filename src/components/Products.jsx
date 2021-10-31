@@ -58,22 +58,16 @@ result(product){
 					totalPrice: this.state.totalPrice - newProducts[itemClickIndex].price
 				})
 			}
-	
-			
-
-	this.setState({
-		products: newProducts,
+		this.setState({
+			products: newProducts,
 	})
 }
-
-
-
 
     render() {
 		console.log(this.state.products)
 		// console.log(itemClickIndex)
 
-			const {error, isLoading, products, added} = this.state;
+			const {error, isLoading, products} = this.state;
 				if (error) {
 					return <p>Error {error.message}</p>
 				}		else if  (!isLoading) {
